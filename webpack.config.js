@@ -1,4 +1,6 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -7,6 +9,12 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname,'bundle')
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    }),
+    new CleanWebpackPlugin()
+  ],
   module: {
     rules: [
       {
@@ -17,7 +25,7 @@ module.exports = {
             options: {
               name: '[name].[ext]',
               outputPath: 'images/',
-              publicPath: 'bundle/images/',
+              publicPath: 'bundle/images',
             }
           }
         ]
@@ -35,7 +43,7 @@ module.exports = {
             loader: "postcss-loader",
             options: {
                 plugins: [
-                    require("autoprefixer") /*在这里添加*/
+                    require("autoprefixer")
                 ]
             }
           }
