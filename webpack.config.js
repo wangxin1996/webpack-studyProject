@@ -5,6 +5,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 module.exports = {
   mode: 'development',
   devtool: 'source-map',
+  devServer: {
+    contentBase: './bundle'
+  },
   entry: './scr/js/index.js',
   output: {
     filename: 'bundle.js',
@@ -26,7 +29,7 @@ module.exports = {
             options: {
               name: '[name].[ext]',
               outputPath: 'images/',
-              publicPath: 'bundle/images',
+              publicPath: './images',
             }
           }
         ]
