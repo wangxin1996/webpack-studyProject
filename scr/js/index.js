@@ -24,4 +24,24 @@ document.body.appendChild(div)
 new Header()
 new Sidebar()
 new Content()
-console.log(1234567)
+console.log(12345678)
+
+// 模块热更新
+var btn = document.createElement('button')
+btn.setAttribute('id','btnId')
+btn.innerHTML = '添加'
+dom.appendChild(btn)
+var btnId = document.getElementById('btnId')
+btnId.onclick = function(){
+  var htmlDiv = document.createElement('div')
+  htmlDiv.setAttribute('class','htmlDiv')
+  dom.appendChild(htmlDiv)
+}
+console.log(btnId)
+import '../css/index.css'
+
+if(module.hot){
+  module.hot.accept('./header.js',() => {
+    Header()
+  })
+}
