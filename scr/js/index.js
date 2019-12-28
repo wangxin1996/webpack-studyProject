@@ -45,3 +45,7 @@ if(module.hot){
     Header()
   })
 }
+
+// tree shaking
+import { add } from './main.js'
+add(2)

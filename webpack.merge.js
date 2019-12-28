@@ -1,15 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const webpack = require('webpack')
 
 module.exports = {
-  mode: 'development',
-  devtool: 'source-map',
-  devServer: {
-    contentBase: './bundle',
-    hot: true
-  },
   entry: './scr/js/index.js',
   output: {
     filename: 'bundle.js',
@@ -17,11 +10,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './scr/index.html'
     }),
-    new CleanWebpackPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new CleanWebpackPlugin()
   ],
   module: {
     rules: [
